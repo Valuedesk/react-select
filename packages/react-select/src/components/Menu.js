@@ -70,9 +70,11 @@ export function getMenuPlacement({
 
   const {
     bottom: menuBottom,
-    height: menuHeight,
+    height: menuHeightBoundingRect,
     top: menuTop,
   } = menuEl.getBoundingClientRect();
+  const menuHeight = menuEl.style.transform ? menuEl.offsetHeight : menuHeightBoundingRect;
+  
 
   // using the height of the scrollable parent and not the window height.
   const viewHeight = scrollParent.clientHeight;
