@@ -69,9 +69,11 @@ export function getMenuPlacement({
   const { height: scrollHeight } = scrollParent.getBoundingClientRect();
   const {
     bottom: menuBottom,
-    height: menuHeight,
+    height: menuHeightBoundingRect,
     top: menuTop,
   } = menuEl.getBoundingClientRect();
+  const menuHeight = menuEl.style.transform ? menuEl.offsetHeight : menuHeightBoundingRect;
+  
 
   const { top: containerTop } = menuEl.offsetParent.getBoundingClientRect();
   const viewHeight = window.innerHeight;
