@@ -1,14 +1,17 @@
 {
-  "name": "react-select",
+  "name": "@valuedesk/react-select",
   "version": "5.6.1",
   "description": "A Select control built with and for ReactJS",
-  "main": "dist/react-select.cjs.js",
-  "module": "dist/react-select.esm.js",
-  "types": "dist/react-select.cjs.d.ts",
+  "main": "dist/valuedesk-react-select.cjs.js",
+  "module": "dist/valuedesk-react-select.esm.js",
+  "types": "dist/valuedesk-react-select.cjs.d.ts",
   "sideEffects": false,
   "author": "Jed Watson",
   "license": "MIT",
-  "repository": "https://github.com/JedWatson/react-select/tree/master/packages/react-select",
+  "repository": "https://github.com/Valuedesk/react-select/tree/master/packages/react-select",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "@babel/runtime": "^7.12.0",
     "@emotion/cache": "^11.4.0",
