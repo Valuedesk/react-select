@@ -20,7 +20,6 @@ import {
   getBoundingClientObj,
   getScrollParent,
   getScrollTop,
-  normalizedHeight,
   scrollTo,
 } from '../utils';
 import {
@@ -84,9 +83,7 @@ export function getMenuPlacement({
   
 
   const { top: containerTop } = menuEl.offsetParent.getBoundingClientRect();
-  const viewHeight = isFixedPosition
-    ? window.innerHeight
-    : normalizedHeight(scrollParent);
+  const viewHeight = window.innerHeight;
   const scrollTop = getScrollTop(scrollParent);
 
   const marginBottom = parseInt(getComputedStyle(menuEl).marginBottom, 10);
