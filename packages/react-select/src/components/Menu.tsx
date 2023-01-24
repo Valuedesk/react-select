@@ -75,14 +75,17 @@ export function getMenuPlacement({
 
   // we can't trust `scrollParent.scrollHeight` --> it may increase when
   // the menu is rendered
-  const { height: scrollHeight } = scrollParent.getBoundingClientRect();
-  const {
-    bottom: menuBottom,
-    height: menuHeight,
-    top: menuTop,
-  } = menuEl.getBoundingClientRect();
+  const scrollParentRect = scrollParent.getBoundingClientRect();
+  const { height: scrollHeight } = scrollParentRect;
 
-  const { top: containerTop } = menuEl.offsetParent.getBoundingClientRect();
+  const menuBoundingClientRect = menuEl.getBoundingClientRect()
+  
+  // If not fixed, menu's top/bottom should always be relative to the scollParent, not the viewport
+  const menuBottom = isFixedPosition ? menuBoundingClientRect.bottom : menuBoundingClientRect.bottom - scrollParentRect.bottom;
+  const menuTop = isFixedPosition ? menuBoundingClientRect.top : menuBoundingClientRect.top - scrollParentRect.top;
+  const menuHeight = menuEl.style.transform ? menuEl.offsetHeight : menuBoundingClientRect.height;
+  
+  const containerTop = menuEl.offsetParent.getBoundingClientRect().top - (isFixedPosition ? 0 : scrollParentRect.top);
   const viewHeight = isFixedPosition
     ? window.innerHeight
     : normalizedHeight(scrollParent);
